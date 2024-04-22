@@ -10,27 +10,35 @@ namespace Model
         public Difficulty Difficulty { get; set; }
 
         public DateTime ExamDate { get; set; }
-        public DateTime PreparetionStart { get; set; }
+        public DateTime PreparationTime { get; set; }
 
         public Discipline(string title, string teacherName, DateTime examDate, Difficulty difficulty)
         {
             Title = title;
             TeacherName = teacherName;
             Difficulty = difficulty;
-            PreparetionStart = examDate;
             ExamDate = examDate;
 
             switch(Difficulty)
             {
                 case Difficulty.Normal:
-                    PreparetionStart.AddDays(-14);
+                    try
+                    {
+                        PreparationTime = ExamDate.AddDays(-14);
+                    }
+                    catch { }
                     break;
 
                 case Difficulty.Hard:
-                    PreparetionStart.AddMonths(-1);
+                    try
+                    {
+                        PreparationTime = ExamDate.AddMonths(-1);
+                    }
+                    catch { }
                     break;
 
                 default:
+                    PreparationTime = ExamDate;
                     break;
             }
         }

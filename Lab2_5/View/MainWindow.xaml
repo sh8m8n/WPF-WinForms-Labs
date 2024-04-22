@@ -28,7 +28,9 @@
 
             <TextBlock Text="Уровень сложности"/>
 
-            <ComboBox Margin="0,0,0,10"/>
+            <ComboBox ItemsSource="{Binding Difficulties}"
+                      SelectedItem="{Binding Difficulty}"
+                      Margin="0,0,0,10"/>
 
             <TextBlock Text="Дата экзамена"/>
 
@@ -65,7 +67,7 @@
                         Дата экзамена
                     </GridViewColumn>
 
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=P}">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=PreparationTime}">
                         Начало подготовки
                     </GridViewColumn>
                 </GridView>
