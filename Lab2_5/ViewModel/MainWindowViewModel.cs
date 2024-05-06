@@ -1,11 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ViewModel
 {
@@ -18,11 +14,43 @@ namespace ViewModel
         public Discipline SelectedDiscipline
         {
             get { return selectedDiscipline; }
-            set { selectedDiscipline = value; }
+            set
+            {
+                selectedDiscipline = value;
+                DeleteCommand.NotifyCanExecuteChanged();
+            }
         }
 
-        public string Title { get; set; }
-        public string TeacherName { get; set; }
+        private string title;
+
+        public string Title 
+        {
+            get
+            {
+                return title;
+            }
+            set
+            {
+                title = value;
+                AddCommand.NotifyCanExecuteChanged();
+            }
+        }
+
+        private string teacherName;
+
+        public string TeacherName
+        {
+            get
+            {
+                return teacherName;
+            }
+            set
+            {
+                teacherName = value;
+                AddCommand.NotifyCanExecuteChanged();
+            }
+        }
+
         public Difficulty[] Difficulties { get; set; }
         public Difficulty Difficulty { get; set; }
         public DateTime ExamDate { get; set; } = DateTime.Now;
@@ -36,8 +64,17 @@ namespace ViewModel
 
             Difficulties = new Difficulty[] { Difficulty.Easy, Difficulty.Normal, Difficulty.Hard};
 
-            AddCommand = new RelayCommand(AddDiscipline);
-            DeleteCommand = new RelayCommand(DeleteDiscipline); //, () => SelectedDiscipline != null);
+            AddCommand = new RelayCommand(AddDiscipline, AddCommandCanExecute);
+            DeleteCommand = new RelayCommand(DeleteDiscipline, () => SelectedDiscipline != null);
+            DeleteCommand.NotifyCanExecuteChanged();
+        }
+
+        private bool AddCommandCanExecute()
+        {
+            if(!String.IsNullOrEmpty(Title) && !String.IsNullOrEmpty(TeacherName))
+                return true;
+            else
+                return false;
         }
 
         private void AddDiscipline()
