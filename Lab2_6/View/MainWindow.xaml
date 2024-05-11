@@ -1,0 +1,277 @@
+﻿<Window x:Class="View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="1000">
+    <Grid ShowGridLines="True">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!--Список фильмов-->
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Список Фильмов"
+                   HorizontalAlignment="Center"/>
+            
+            <ListView ItemsSource="{Binding Movies}"
+                      Grid.Row="1">
+                <ListView.View>
+                    <GridView>
+                        
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Title}">
+                            Название
+                        </GridViewColumn>
+                        
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Genre}">
+                            Жанр
+                        </GridViewColumn>
+                        
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Director}">
+                            Режиссер
+                        </GridViewColumn>
+                        
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Year}">
+                            Год
+                        </GridViewColumn>
+                        
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Rating}">
+                            Рейтинг
+                        </GridViewColumn>
+                        
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <Button Command="{Binding DeleteCommand}"
+                    Grid.Row="2"
+                    Content ="Удалить Уничтожить Стереть Исключить Ликвидировать Вычеркнуть Дезинтегрировать"
+                    Margin="5"/>
+        </Grid>
+        
+        <!--Добавление фильмов-->
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            
+            <Label Content="Добавление фильмов"
+                   HorizontalAlignment="Center"/>
+
+            <Grid Grid.Row="1">
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Text="Название"
+                           Grid.Row="0" Grid.Column="0" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+
+                <TextBox   Text="{Binding Title}"
+                           Grid.Row="0" Grid.Column="1" />
+                
+                <TextBlock Text="Жанр"
+                           Grid.Row="1" Grid.Column="0" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+
+                <ComboBox ItemsSource="{Binding Genre}"
+                          SelectedItem="{Binding SelectedGenre}"
+                          Grid.Row ="1" Grid.Column="1"/>
+
+                <TextBlock Text="Год выпуска"
+                           Grid.Row="2" Grid.Column="0" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+
+                <TextBox   Text="{Binding Year}"
+                           Grid.Row="2" Grid.Column="1" />
+
+                <TextBlock Text="Режиссер"
+                           Grid.Row="3" Grid.Column="0" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+                
+                <TextBox   Text="{Binding DirectorName}"
+                           Grid.Row="3" Grid.Column="1" />
+                
+                <TextBlock Text="Рейтинг"
+                           Grid.Row="4" Grid.Column="0" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+
+                <TextBox   Text="{Binding Rating}"
+                           Grid.Row="4" Grid.Column="1" />
+
+
+            </Grid>
+
+            <Button Command="{Binding AddCommand}"
+                    Grid.Row="2"
+                    Content ="Добавить"
+                    Width="100"
+                    Margin="5"/>
+        </Grid>
+
+        <!--Поиск и сортировка-->
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Поиск и сортировка"
+                   HorizontalAlignment="Center"/>
+
+            <Grid Grid.Row="1">
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Жанр"
+                           Grid.Row="0" Grid.Column="0" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+
+                <ComboBox ItemsSource="{Binding Genre}"
+                          SelectedItem="{Binding SelectedGenreSort}"
+                          Grid.Row ="0" Grid.Column="1"
+                          Margin="5"/>
+
+                <Button Command="{Binding GenreSortingCommand}"
+                        Grid.Row="1" Grid.Column="1"
+                        Content="Поиск по жанру"/>
+
+                <TextBlock Text="Диапазон дат (от/до)"
+                           Grid.Row="2" Grid.Column="0" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+
+                <Grid Grid.Row="2" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Text="{Binding StartYearSort}"
+                             Grid.Column="0"
+                             Margin="5"/>
+
+                    <TextBox Text="{Binding EndYearSort}"
+                             Grid.Column="1"
+                             Margin="5"/>
+                </Grid>
+
+                <Button Command="{Binding YearSortingCommand}"
+                        Grid.Row="3" Grid.Column="1"
+                        Content="Поиск по Году"/>
+
+                <TextBlock Text="Рейтинг"
+                           Grid.Row="4" Grid.Column="0" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+
+                <Grid Grid.Row="4" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Command="{Binding AscendingRatingSort}"
+                            Grid.Column="0"
+                            Content="По возрастанию"
+                            Margin="5"/>
+                    
+                    <Button Command="{Binding DescendingRatingSort}"
+                            Grid.Column="1"
+                            Content="По убыванию"
+                            Margin="5"/>
+                </Grid>
+            </Grid>
+
+            <Button Command="{Binding ResetSortCommand}"
+                    Grid.Row="2"
+                    Content="Сбросить сортировку"
+                    Width="200"
+                    Margin="5"/>
+        </Grid> 
+
+        <!--Список режиссеров-->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Список режиссеров"
+                   HorizontalAlignment="Center"/>
+
+            <ListView ItemsSource="{Binding Directors}"
+                      Grid.Row="1">
+                <ListView.View>
+                    <GridView>
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Title}">
+                            Имя
+                        </GridViewColumn>
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Genre}">
+                            Количество фильмов
+                        </GridViewColumn>
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Director}">
+                           Средний рейтинг
+                        </GridViewColumn>
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Year}">
+                            Первое появление
+                        </GridViewColumn>
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Rating}">
+                            Последнее появление
+                        </GridViewColumn>
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </Grid>
+</Window>
