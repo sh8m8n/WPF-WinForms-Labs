@@ -34,11 +34,11 @@ namespace Model
             }
             AverageRating = sumRating / MovieCount;
 
-            if(movie.Year < StartActivityYear)
+            if (movie.Year < StartActivityYear)
             {
                 StartActivityYear = movie.Year;
             }
-            else if(movie.Year > EndActivityYear)
+            else if (movie.Year > EndActivityYear)
             {
                 EndActivityYear = movie.Year;
             }
@@ -56,7 +56,7 @@ namespace Model
             foreach (Movie m in Movies)
             {
                 sumRating += m.Rating;
-                if(m.Year < StartActivityYear)
+                if (m.Year < StartActivityYear)
                 {
                     StartActivityYear = m.Year;
                 }

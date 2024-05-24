@@ -28,7 +28,8 @@
             <Label Content="Список Фильмов"
                    HorizontalAlignment="Center"/>
             
-            <ListView ItemsSource="{Binding Movies}"
+            <ListView ItemsSource="{Binding SortedMovies}"
+                      SelectedItem="{Binding SelectedMovie}"
                       Grid.Row="1">
                 <ListView.View>
                     <GridView>
@@ -41,7 +42,7 @@
                             Жанр
                         </GridViewColumn>
                         
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Director}">
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=DirectorName}">
                             Режиссер
                         </GridViewColumn>
                         
@@ -102,7 +103,7 @@
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"/>
 
-                <ComboBox ItemsSource="{Binding Genre}"
+                <ComboBox ItemsSource="{Binding Genres}"
                           SelectedItem="{Binding SelectedGenre}"
                           Grid.Row ="1" Grid.Column="1"/>
 
@@ -171,7 +172,7 @@
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"/>
 
-                <ComboBox ItemsSource="{Binding Genre}"
+                <ComboBox ItemsSource="{Binding Genres}"
                           SelectedItem="{Binding SelectedGenreSort}"
                           Grid.Row ="0" Grid.Column="1"
                           Margin="5"/>
@@ -215,12 +216,12 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Command="{Binding AscendingRatingSort}"
+                    <Button Command="{Binding AscendingRatingSortCommand}"
                             Grid.Column="0"
                             Content="По возрастанию"
                             Margin="5"/>
                     
-                    <Button Command="{Binding DescendingRatingSort}"
+                    <Button Command="{Binding DescendingRatingSortCommand}"
                             Grid.Column="1"
                             Content="По убыванию"
                             Margin="5"/>
@@ -244,28 +245,28 @@
             <Label Content="Список режиссеров"
                    HorizontalAlignment="Center"/>
 
-            <ListView ItemsSource="{Binding Directors}"
+            <ListView ItemsSource="{Binding SortedDirectors}"
                       Grid.Row="1">
                 <ListView.View>
                     <GridView>
 
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Title}">
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">
                             Имя
                         </GridViewColumn>
 
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Genre}">
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=MovieCount}">
                             Количество фильмов
                         </GridViewColumn>
 
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Director}">
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=AverageRating}">
                            Средний рейтинг
                         </GridViewColumn>
 
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Year}">
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=StartActivityYear}">
                             Первое появление
                         </GridViewColumn>
 
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Rating}">
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=EndActivityYear}">
                             Последнее появление
                         </GridViewColumn>
 
