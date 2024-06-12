@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Model;
 using System.Collections.ObjectModel;
+using System.IO;
 
 namespace ViewModel
 {
@@ -136,19 +137,25 @@ namespace ViewModel
         /// </summary>
         private void UpdateSortedDirectors()
         {
-            SortedDirectors.Clear();
+            var uniqueDirectors = SortedMovies.Select(movie => movie.DirectorName)
+                            .Distinct()
+                            .Join(Directors, // Присоединяем к именам режиссеров соответствующие объекты Director
+                                  directorName => directorName,
+                                  director => director.Name,
+                                  (directorName, director) => director);
+            sortedDirectors = new ObservableCollection<Director>(uniqueDirectors);
 
-            foreach (Director director in Directors)
-            {
-                foreach (Movie movie in SortedMovies)
-                {
-                    if (director.Movies.Contains(movie))
-                    {
-                        SortedDirectors.Add(director);
-                        break;
-                    }
-                }
-            }
+            //foreach (Director director in Directors)
+            //{
+            //    foreach (Movie movie in SortedMovies)
+            //    {
+            //        if (director.Movies.Contains(movie))
+            //        {
+            //            SortedDirectors.Add(director);
+            //            break;
+            //        }
+            //    }
+            //}
         }
 
         private bool CanAddMovie()
