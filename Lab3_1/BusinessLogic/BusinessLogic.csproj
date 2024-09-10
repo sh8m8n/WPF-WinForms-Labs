@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{17ADF561-1484-451F-9D1A-5BBBC65EA74B}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleView</RootNamespace>
-    <AssemblyName>ConsoleView</AssemblyName>
+    <ProjectGuid>{7CE5B23D-CCFC-49A0-8ADF-090CC05B54D5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BusinessLogic</RootNamespace>
+    <AssemblyName>BusinessLogic</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LabLib">
-      <HintPath>..\..\..\Labs\LabLib\bin\Debug\LabLib.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,20 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DTO\StudentDTO.cs" />
+    <Compile Include="DTO\StudentDTOAssembler.cs" />
+    <Compile Include="StudentManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
-      <Project>{7ce5b23d-ccfc-49a0-8adf-090cc05b54d5}</Project>
-      <Name>BusinessLogic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ConsoleHistogram\ConsoleHistogram.csproj">
-      <Project>{0842c0b7-6fcd-43b7-83d0-3df85bf5e1a0}</Project>
-      <Name>ConsoleHistogram</Name>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{ac1ca047-36fa-4a81-b446-d4b5305f50f7}</Project>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
