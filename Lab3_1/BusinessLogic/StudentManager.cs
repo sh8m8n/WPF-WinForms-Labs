@@ -10,6 +10,7 @@ namespace BusinessLogic
 
         public StudentManager()
         {
+            //Заполнение данными
             for (int i = 0; i < 10; i++)
             {
                 studentsData.Create($" Газманов2-{i}", "ИБ", "1");

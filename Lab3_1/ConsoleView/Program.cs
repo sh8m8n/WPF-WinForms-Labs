@@ -125,6 +125,7 @@ namespace ConsoleView
 
             Histogram histogram = new Histogram() { Height = 20 };
 
+            Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine(histogram.GetHistogram(studentManager.GetSpecialitiesMembersCount()));
             Console.ForegroundColor = ConsoleColor.White;

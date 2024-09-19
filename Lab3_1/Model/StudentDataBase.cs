@@ -44,7 +44,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Возвращает всех студентов из базы данных
+        /// Возвращает копии всех студентов из базы данных
         /// </summary>
         /// <returns></returns>
         public IEnumerable<Student> ReadAll()
