@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LabLib">
-      <HintPath>..\..\..\Labs\LabLib\bin\Debug\LabLib.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,6 +48,10 @@
     <Compile Include="StudentAssembler.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Console-Labs\LabLib\LabLib.csproj">
+      <Project>{672fb905-7df2-4f96-bbf1-69030b2fb2b1}</Project>
+      <Name>LabLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
       <Project>{0da27886-877c-4c00-9c34-3bfe92413191}</Project>
       <Name>BusinessLogic</Name>

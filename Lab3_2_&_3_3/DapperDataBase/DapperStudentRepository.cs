@@ -2,67 +2,70 @@
 using Dapper;
 using Entities;
 using System.Collections.Generic;
+using Npgsql;
 using System.Data;
-using System.Data.SqlClient;
+using System.Linq;
 
 namespace DapperDataBase
 {
-    internal class DapperStudentRepository : IRepository<Student>
+    public class DapperStudentRepository : IRepository<Student>
     {
-        private readonly string _connectionString;
+        private readonly string _connectionString
+            = "Host=localhost;Port=5432;Database=DapperStudentDB;Username=postgres;Password=2064243;";
 
-        public DapperStudentRepository(string connectionString)
-        {
-            _connectionString = connectionString;
-        }
 
         public Student Create()
         {
-            // Здесь можно создать новый объект Student и сохранить его в БД
-            var student = new Student(0) // ID будет присвоен при вставке
-
-            using (IDbConnection db = new SqlConnection(_connectionString))
+            // Метод Create не принимает параметров, поэтому создадим нового студента с пустыми значениями
+            var newStudent = new Student(0) // ID будет назначен в БД
             {
-                var sqlQuery = "INSERT INTO Students (Name, Speciality, Group) VALUES(@Name, @Speciality, @Group); SELECT CAST(SCOPE_IDENTITY() as int);";
-                student.ID = db.QuerySingle<int>(sqlQuery, student);
+                Name = string.Empty,
+                Speciality = string.Empty,
+                Group = string.Empty
+            };
+
+            using (IDbConnection db = new NpgsqlConnection(_connectionString))
+            {
+                var sql = "INSERT INTO Students (Name, Speciality, StudentGroup) VALUES (@Name, @Speciality, @Group) RETURNING ID;";
+                newStudent.ID = db.ExecuteScalar<int>(sql, newStudent);
             }
 
-            return student;
+            return newStudent;
         }
 
         public Student Read(int id)
         {
-            using (IDbConnection db = new SqlConnection(_connectionString))
+            using (IDbConnection db = new NpgsqlConnection(_connectionString))
             {
-                var sqlQuery = "SELECT * FROM Students WHERE ID = @Id;";
-                return db.QuerySingleOrDefault<Student>(sqlQuery, new { Id = id });
+                var sql = "SELECT * FROM Students WHERE ID = @Id;";
+                return db.QuerySingleOrDefault<Student>(sql, new { Id = id });
             }
         }
 
         public IEnumerable<Student> ReadAll()
         {
-            using (IDbConnection db = new SqlConnection(_connectionString))
+            using (IDbConnection db = new NpgsqlConnection(_connectionString))
             {
-                var sqlQuery = "SELECT * FROM Students;";
-                return db.Query<Student>(sqlQuery);
+                var sql = "SELECT * FROM Students;";
+                return db.Query<Student>(sql).ToList();
             }
         }
 
-        public void Update(Student entity)
+        public void Update(Student student)
         {
-            using (IDbConnection db = new SqlConnection(_connectionString))
+            using (IDbConnection db = new NpgsqlConnection(_connectionString))
             {
-                var sqlQuery = "UPDATE Students SET Name = @Name, Speciality = @Speciality, Group = @Group WHERE ID = @Id;";
-                db.Execute(sqlQuery, new { entity.Name, entity.Speciality, entity.Group, Id = entity.ID });
+                var sql = "UPDATE Students SET Name = @Name, Speciality = @Speciality, StudentGroup = @Group WHERE ID = @Id;";
+                db.Execute(sql, student);
             }
         }
 
         public void Delete(int id)
         {
-            using (IDbConnection db = new SqlConnection(_connectionString))
+            using (IDbConnection db = new NpgsqlConnection(_connectionString))
             {
-                var sqlQuery = "DELETE FROM Students WHERE ID = @Id;";
-                db.Execute(sqlQuery, new { Id = id });
+                var sql = "DELETE FROM Students WHERE ID = @Id;";
+                db.Execute(sql, new { Id = id });
             }
         }
     }
