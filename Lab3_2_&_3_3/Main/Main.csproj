@@ -50,10 +50,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
-      <Project>{0da27886-877c-4c00-9c34-3bfe92413191}</Project>
-      <Name>BusinessLogic</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ConsoleView\ConsoleView.csproj">
       <Project>{6a5151aa-66e4-4c99-8915-92e114de1841}</Project>
       <Name>ConsoleView</Name>

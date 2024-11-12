@@ -1,8 +1,8 @@
 ﻿namespace Entities
 {
-    public class Student : IEntity
+    public class Student
     {
-        public int ID { get; set; }
+        public readonly int ID;
 
         public string Name { get; set; }
         public string Speciality { get; set; }

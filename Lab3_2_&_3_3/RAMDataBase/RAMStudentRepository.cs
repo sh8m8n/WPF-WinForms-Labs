@@ -1,7 +1,6 @@
-﻿using BusinessLogic.Interfaces;
-using Entities;
+﻿using Entities;
+using Interactors.Interfaces;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
 
 namespace RAMDataBase
 {

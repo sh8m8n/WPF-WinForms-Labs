@@ -1,5 +1,8 @@
-﻿namespace BusinessLogic
+﻿namespace Interactors.DTOs
 {
+    /// <summary>
+    /// Создается интеракторами, используется во внешних кругах
+    /// </summary>
     public class StudentDTO
     {
         public int ID { get; set; }

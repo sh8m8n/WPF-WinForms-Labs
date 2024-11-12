@@ -7,8 +7,8 @@
     <ProjectGuid>{0DA27886-877C-4C00-9C34-3BFE92413191}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BusinessLogic</RootNamespace>
-    <AssemblyName>BusinessLogic</AssemblyName>
+    <RootNamespace>Interactors</RootNamespace>
+    <AssemblyName>Interactors</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,15 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTOs\IDTOAssembler.cs" />
-    <Compile Include="DTOs\StudentData.cs" />
-    <Compile Include="DTOs\StudentDTOAssembler.cs" />
-    <Compile Include="Interfaces\IRepository.cs" />
-    <Compile Include="Interfaces\IRepositoryFactory.cs" />
-    <Compile Include="Interfaces\IStudentManager.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DTOs\ErrorData.cs" />
     <Compile Include="DTOs\StudentDTO.cs" />
-    <Compile Include="StudentManager.cs" />
+    <Compile Include="DTOs\StudentPersonalData.cs" />
+    <Compile Include="ErrorNotificationUseCase.cs" />
+    <Compile Include="Interfaces\IErrorNotificationInputPort.cs" />
+    <Compile Include="Interfaces\IErrorNotificationOutputPort.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IStudentManagementOutputPort.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Interfaces\IStudentsManagementInputPort.cs" />
+    <Compile Include="StudentManagementUseCase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">
