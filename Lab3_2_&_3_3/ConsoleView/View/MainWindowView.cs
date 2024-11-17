@@ -4,7 +4,7 @@ using System;
 
 namespace ConsoleView.View
 {
-    internal class MainWindowView : IMainWindowView
+    public class MainWindowView : IMainWindowView
     {
         public void Render(MainWindowViewModel viewModel)
         {

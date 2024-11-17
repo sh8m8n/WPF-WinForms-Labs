@@ -1,10 +1,8 @@
-﻿using ConsoleView;
-using BusinessLogic;
-using RAMDataBase;
-using Entities;
-using BusinessLogic.Interfaces;
-using BusinessLogic.DTOs;
-using DapperDataBase;
+﻿using RAMDataBase;
+using Interactors;
+using ConsoleView.Controllers;
+using ConsoleView.View;
+using ConsoleView.Presenters;
 
 namespace Main
 {
@@ -12,116 +10,45 @@ namespace Main
     {
         static void Main(string[] args)
         {
-            ConsoleViewDapperDemo();
+            ConsoleRamDemo();
         }
 
-        static void ConsoleViewDapperDemo()
+        private static void ConsoleRamDemo()
         {
-            MainWindow mainWindow = new MainWindow();
+            //Контроллеры
+            StudentManagementController studentManagementController = new StudentManagementController();
 
-            mainWindow.studentManager.studentRepositoryFactory = new DapperStudentRepoFactory();
+            //инетракторы
+            ErrorNotificationUseCase errorNotificationUseCase = new ErrorNotificationUseCase();
+            StudentManagementUseCase studentManagementUseCase = new StudentManagementUseCase();
 
-            //Заполнение тестовыми данными
-            for (int i = 0; i < 10; i++)
-            {
-                StudentData s = new StudentData();
-                s.Name = $" Газманов2-{i}";
-                s.Speciality = "ИБ";
-                s.Group = "1";
+            //БД
+            RAMStudentRepository rAMStudentRepository = new RAMStudentRepository();
 
-                mainWindow.studentManager.Create(s);
-            }
+            //Презентаторы
+            StudentManagementPresenter studentManagementPresenter = new StudentManagementPresenter();
+            ErrorPresenter errorPresenter = new ErrorPresenter();
 
-            for (int i = 0; i < 19; i++)
-            {
-                StudentData s = new StudentData();
-                s.Name = $" Газманов-{i}";
-                s.Speciality = "ИСИТ";
-                s.Group = "1";
+            //Представления
+            ErrorWindow errorWindow = new ErrorWindow();
+            MainWindowView mainWindow = new MainWindowView();
 
-                mainWindow.studentManager.Create(s);
-            }
+            //=======================ЗАВИСИМОСТИ======================
 
-            for (int i = 0; i < 15; i++)
-            {
-                StudentData s = new StudentData();
-                s.Name = $" Газманов3-{i}";
-                s.Speciality = "САС";
-                s.Group = "1";
+            //Контроллеры
+            studentManagementController.studentManager = studentManagementUseCase;
+            studentManagementController.errorNotificator = errorNotificationUseCase;
 
-                mainWindow.studentManager.Create(s);
-            }
+            //Интеракторы
+            studentManagementUseCase.presenter = studentManagementPresenter;
+            studentManagementUseCase.studentRepository = rAMStudentRepository;
+            errorNotificationUseCase.presenter = errorPresenter;
 
-            for (int i = 0; i < 6; i++)
-            {
-                StudentData s = new StudentData();
-                s.Name = $" Газманов4-{i}";
-                s.Speciality = "ГУГ";
-                s.Group = "1";
+            //Презентаторы
+            studentManagementPresenter.MainWindow = mainWindow;
+            errorPresenter.errorWindow = errorWindow;
 
-                mainWindow.studentManager.Create(s);
-            }
-
-            mainWindow.Show();
-        }
-
-        static void ConsoleViewRamDatabaseDemo()
-        {
-            MainWindow mainWindow = new MainWindow();
-
-            mainWindow.studentManager.studentRepositoryFactory = new StudentRepositoryFactory();
-
-            //Заполнение тестовыми данными
-            for (int i = 0; i < 10; i++)
-            {
-                StudentData s = new StudentData();
-                s.Name = $" Газманов2-{i}";
-                s.Speciality = "ИБ";
-                s.Group = "1";
-
-                mainWindow.studentManager.Create(s);
-            }
-
-            for (int i = 0; i < 19; i++)
-            {
-                StudentData s = new StudentData();
-                s.Name = $" Газманов-{i}";
-                s.Speciality = "ИСИТ";
-                s.Group = "1";
-
-                mainWindow.studentManager.Create(s);
-            }
-
-            for (int i = 0; i < 15; i++)
-            {
-                StudentData s = new StudentData();
-                s.Name = $" Газманов3-{i}";
-                s.Speciality = "САС";
-                s.Group = "1";
-
-                mainWindow.studentManager.Create(s);
-            }
-
-            for (int i = 0; i < 6; i++)
-            {
-                StudentData s = new StudentData();
-                s.Name = $" Газманов4-{i}";
-                s.Speciality = "ГУГ";
-                s.Group = "1";
-
-                mainWindow.studentManager.Create(s);
-            }
-
-            mainWindow.Show();
-        }
-
-        static void ConsoleViewRamDatabase()
-        {
-            MainWindow mainWindow = new MainWindow();
-
-            mainWindow.studentManager.studentRepositoryFactory = new StudentRepositoryFactory();
-
-            mainWindow.Show();
+            studentManagementController.Main();
         }
     }
 }

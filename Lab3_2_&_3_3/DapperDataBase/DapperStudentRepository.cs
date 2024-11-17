@@ -1,4 +1,4 @@
-﻿using BusinessLogic.Interfaces;
+﻿using Interactors;
 using Dapper;
 using Entities;
 using System.Collections.Generic;

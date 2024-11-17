@@ -5,9 +5,9 @@ using Interactors.Interfaces;
 
 namespace ConsoleView.Presenters
 {
-    internal class ErrorPresenter : IErrorNotificationOutputPort
+    public class ErrorPresenter : IErrorNotificationOutputPort
     {
-        IErrorWindowView errorWindow;
+        public IErrorWindowView errorWindow;
 
         /// <summary>
         /// 

@@ -9,7 +9,7 @@ using System;
 
 namespace ConsoleView.Controllers
 {
-    internal class StudentManagementPresenter : IStudentManagementOutputPort
+    public class StudentManagementPresenter : IStudentManagementOutputPort
     {
         public IMainWindowView MainWindow { get; set; }
 

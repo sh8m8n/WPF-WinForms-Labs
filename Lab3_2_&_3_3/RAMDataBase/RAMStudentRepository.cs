@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace RAMDataBase
 {
-    internal class RAMStudentRepository : IRepository<Student>
+    public class RAMStudentRepository : IRepository<Student>
     {
         private List<Student> students = new List<Student>();
         private int LastID = 0;

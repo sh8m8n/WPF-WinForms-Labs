@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleView
 {
-    public class Histogram
+    internal class Histogram
     {
         /// <summary>
         /// Максимальная высота столбца

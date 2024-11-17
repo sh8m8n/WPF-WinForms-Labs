@@ -47,20 +47,13 @@
     <Compile Include="Presenters\Interfaces\IMainWindowView.cs" />
     <Compile Include="Presenters\StudentManagementPresenter.cs" />
     <Compile Include="Presenters\Histogram.cs" />
-    <Compile Include="MainWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Student.cs" />
-    <Compile Include="StudentAssembler.cs" />
     <Compile Include="ViewModels\ErrorWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="View\ErrorWindow.cs" />
     <Compile Include="View\MainWindowView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Labs\LabLib\LabLib.csproj">
-      <Project>{672fb905-7df2-4f96-bbf1-69030b2fb2b1}</Project>
-      <Name>LabLib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Interactors\Interactors.csproj">
       <Project>{0da27886-877c-4c00-9c34-3bfe92413191}</Project>
       <Name>Interactors</Name>
