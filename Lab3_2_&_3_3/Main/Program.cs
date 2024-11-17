@@ -30,7 +30,7 @@ namespace Main
             ErrorPresenter errorPresenter = new ErrorPresenter();
 
             //Представления
-            ErrorWindow errorWindow = new ErrorWindow();
+            ErrorWindowView errorWindow = new ErrorWindowView();
             MainWindowView mainWindow = new MainWindowView();
 
             //=======================ЗАВИСИМОСТИ======================

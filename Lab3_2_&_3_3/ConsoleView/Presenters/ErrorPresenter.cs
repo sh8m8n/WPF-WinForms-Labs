@@ -16,7 +16,7 @@ namespace ConsoleView.Presenters
         public void Present(ErrorData errorData)
         {
             ErrorWindowViewModel errorVM = new ErrorWindowViewModel(errorData.Message, errorData.PreventActions,
-                System.ConsoleColor.Red, System.ConsoleColor.DarkRed);
+                System.ConsoleColor.DarkRed, System.ConsoleColor.Red);
 
             errorWindow.Render(errorVM);
         }

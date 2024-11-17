@@ -37,6 +37,11 @@ namespace ConsoleView
 
         public string GetHistogram(Dictionary<string, int> data)
         {
+            if(data.Values.Count == 0)
+            {
+                return null;
+            }
+
             maxValueStringLength = data.Values.Max().ToString().Length;
             this.data = data;
 

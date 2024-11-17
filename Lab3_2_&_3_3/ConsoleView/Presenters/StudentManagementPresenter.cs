@@ -11,31 +11,44 @@ namespace ConsoleView.Controllers
 {
     public class StudentManagementPresenter : IStudentManagementOutputPort
     {
+        private const string ZeroMembersReport = "Студентов нет";
+
         public IMainWindowView MainWindow { get; set; }
 
         public void Present(IEnumerable<StudentDTO> students)
         {
             MainWindowViewModel viewModel =
-                new MainWindowViewModel(FormatHistogram(students), FormatTable(students), ConsoleColor.DarkBlue);
+                new MainWindowViewModel(FormatTable(students), FormatHistogram(students), ConsoleColor.DarkCyan);
 
             MainWindow.Render(viewModel);
         }
 
         private string FormatHistogram(IEnumerable<StudentDTO> students)
         {
+            if (students.Count() == 0)
+            {
+                return ZeroMembersReport;
+            }
+
             Histogram histogram = new Histogram() { Height = 10, SummaryBulgingLength = 5};
             return histogram.GetHistogram(students.GroupBy(s => s.Speciality).ToDictionary(g => g.Key, g => g.Count()));
         }
 
         private string FormatTable(IEnumerable<StudentDTO> students)
         {
+            if(students.Count() == 0)
+            {
+                return ZeroMembersReport;
+            }
+
             StringBuilder sb = new StringBuilder();
 
             //Подсчет наидлиннейших атрибутов студента
-            int maxIDLength = 0;
-            int maxNameLength = 0;
-            int maxSpecialityLength = 0;
-            int maxGroupLength = 0;
+            //Стандартные зачения - длины названий атрибутов
+            int maxIDLength = 2; 
+            int maxNameLength = 3;
+            int maxSpecialityLength = 5;
+            int maxGroupLength = 6;
 
             foreach (StudentDTO student in students)
             {
@@ -57,6 +70,9 @@ namespace ConsoleView.Controllers
                 new string('-', maxIDLength + maxNameLength + maxSpecialityLength + maxGroupLength + 5);
 
             sb.Append(horizontalLine);
+            sb.Append($"\n|ID{new string(' ', maxIDLength - 2)}|Имя{new string(' ', maxNameLength - 3)}|" +
+                $"Спец.{new string(' ', maxSpecialityLength - 5)}|Группа{new string(' ', maxGroupLength - 6)}|\n");
+            sb.Append(horizontalLine);
 
             foreach (StudentDTO student in students)
             {
@@ -64,11 +80,11 @@ namespace ConsoleView.Controllers
                     $"\n|{student.ID}{new string(' ', maxIDLength - student.ID.ToString().Length)}" +
                     $"|{student.Name}{new string(' ', maxNameLength - student.Name.Length)}" +
                     $"|{student.Speciality}{new string(' ', maxSpecialityLength - student.Speciality.Length)}" +
-                    $"|{student.Group}{new string(' ', maxGroupLength - student.Group.Length)}"
+                    $"|{student.Group}{new string(' ', maxGroupLength - student.Group.Length)}|"
                     );
             }
 
-            sb.Append(horizontalLine);
+            sb.Append($"\n{horizontalLine}");
 
             return sb.ToString();
         }

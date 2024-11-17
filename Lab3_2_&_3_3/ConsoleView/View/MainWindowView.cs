@@ -6,6 +6,9 @@ namespace ConsoleView.View
 {
     public class MainWindowView : IMainWindowView
     {
+        private readonly int CommandsSummaryHeight = 4;
+        private readonly string CommandAskString = ">";
+
         public void Render(MainWindowViewModel viewModel)
         {
             Console.Clear();
@@ -15,19 +18,26 @@ namespace ConsoleView.View
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(
                 $"Список доступных команд / шаблон ввода:" +
-                $"\n\tДобавить студента : 1 (Name) (Group) (Speciality)" +
-                $"\n\tУдалить студента : 2 (ID)" +
-                $"\n\tИзменить студента : 3 (ID) (New Name) (New Group) (New Speciality)");
+                $"\n\tДобавить студента : add (Name) (Group) (Speciality)" +
+                $"\n\tУдалить студента : delete (ID)" +
+                $"\n\tИзменить студента : update (ID) (New Name) (New Group) (New Speciality)");
 
+            //Ввод команды
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"\n{CommandAskString}");
 
             //Гистограмма
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = viewModel.HistogramColor;
             Console.WriteLine($"\n\n{viewModel.StudentHistogram}");
 
 
             //Таблица
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"\n\n{viewModel.StudentSheet}");
+
+            Console.ForegroundColor= ConsoleColor.Green;
+            Console.SetCursorPosition(CommandAskString.Length, CommandsSummaryHeight + 1);
         }
     }
 }

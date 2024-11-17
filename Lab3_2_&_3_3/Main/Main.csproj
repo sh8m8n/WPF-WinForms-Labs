@@ -58,10 +58,6 @@
       <Project>{6a5151aa-66e4-4c99-8915-92e114de1841}</Project>
       <Name>ConsoleView</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DapperDataBase\DapperDataBase.csproj">
-      <Project>{da110ae8-4a40-4ad2-9743-e6ae4e243848}</Project>
-      <Name>DapperDataBase</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{6b3cba3f-a001-45c8-bd0d-66b833b23480}</Project>
       <Name>Entities</Name>

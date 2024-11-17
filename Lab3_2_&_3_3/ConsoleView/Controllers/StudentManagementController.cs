@@ -12,6 +12,7 @@ namespace ConsoleView.Controllers
 
         public void Main()
         {
+
             studentManager.ReadAllStudents();
 
             while (true)
@@ -21,29 +22,27 @@ namespace ConsoleView.Controllers
                 if(string.IsNullOrEmpty(command))
                 {
                     var error = new ErrorData("Строка Пустая", "заполните ее");
-                    errorNotificator.NotificateError(error);
+                    InvokeErrorDialog(error);
                 }
 
                 string[] args = command.Split(' ');
 
                 if(args.Length <= 1)
                 {
-                    var error = new ErrorData("Команды не существует",
-                                "обратите внимание на список комманд");
-                    errorNotificator.NotificateError(error);
-                    Console.ReadKey();
+                    var error = new ErrorData("Команды не существует", "обратите внимание на список команд");
+                    InvokeErrorDialog(error);
                     continue;
                 }
 
                 switch (args[0])
                 {
-                    case "1":
+                    case "a":
+                    case "add":
                         if (args.Length != 4)
                         {
                             var error = new ErrorData("Неверное число атрибутов",
-                                "Необходимые атриубуты: номер команды, имя, группа, специальность");
-                            errorNotificator.NotificateError(error);
-                            Console.ReadKey();
+                                "Необходимые атриубуты: команда, имя, группа, специальность");
+                            InvokeErrorDialog(error);
                         }
                         else
                         {
@@ -53,23 +52,24 @@ namespace ConsoleView.Controllers
                                 Speciality = args[2],
                                 Group = args[3],
                             };
+                            
+                            studentManager.CreateStudent(StudentPersonalData);
                         }
                         break;
 
-                    case "2":
+                    case "d":
+                    case "delete":
                         if (args.Length != 2)
                         {
                             var error = new ErrorData("Неверное число атрибутов",
-                                "Необходимые атриубуты: номер команды, айдиСтудента");
-                            errorNotificator.NotificateError(error);
-                            Console.ReadKey();
+                                "Необходимые атриубуты команда, айдиСтудента");
+                            InvokeErrorDialog(error);
                         }
                         else if (!int.TryParse(args[1], out int c))
                         {
                             var error = new ErrorData("Неверный атрибут",
-                                "ID студента представлен числом");
-                            errorNotificator.NotificateError(error);
-                            Console.ReadKey();
+                                "ID студента должен быть представлен числом");
+                            InvokeErrorDialog(error);
                         }
                         else
                         {
@@ -78,20 +78,19 @@ namespace ConsoleView.Controllers
                         }
                         break;
 
-                    case "3":
+                    case "u":
+                    case "update":
                         if (args.Length != 5)
                         {
                             var error = new ErrorData("Неверное число атрибутов",
-                                "Необходимые атриубуты: номер команды, ID, имя, группа, специальность");
-                            errorNotificator.NotificateError(error);
-                            Console.ReadKey();
+                                "Необходимые атриубуты: команда, ID, имя, группа, специальность");
+                            InvokeErrorDialog(error);
                         }
                         else if (!int.TryParse(args[1], out int c))
                         {
                             var error = new ErrorData("Неверный атрибут",
-                                "ID студента представлен числом");
-                            errorNotificator.NotificateError(error);
-                            Console.ReadKey();
+                                "ID студента должен быть представлен числом");
+                            InvokeErrorDialog(error);
                         }
                         else
                         {
@@ -112,13 +111,19 @@ namespace ConsoleView.Controllers
                     default:
                         var error2 = new ErrorData("Команды не существует",
                                 "обратите внимание на список комманд");
-                        errorNotificator.NotificateError(error2);
-                        Console.ReadKey();
+                        InvokeErrorDialog(error2);
                         break;
 
                 }
 
             }
+        }
+
+        private void InvokeErrorDialog(ErrorData errorData)
+        {
+            errorNotificator.NotificateError(errorData);
+            Console.ReadKey();
+            studentManager.ReadAllStudents();
         }
     }
 }
