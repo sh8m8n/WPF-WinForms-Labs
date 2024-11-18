@@ -23,6 +23,7 @@ namespace ConsoleView.Controllers
                 {
                     var error = new ErrorData("Строка Пустая", "заполните ее");
                     InvokeErrorDialog(error);
+                    continue;
                 }
 
                 string[] args = command.Split(' ');
@@ -62,7 +63,7 @@ namespace ConsoleView.Controllers
                         if (args.Length != 2)
                         {
                             var error = new ErrorData("Неверное число атрибутов",
-                                "Необходимые атриубуты команда, айдиСтудента");
+                                "Необходимые атриубуты: команда, айдиСтудента");
                             InvokeErrorDialog(error);
                         }
                         else if (!int.TryParse(args[1], out int c))
@@ -95,7 +96,6 @@ namespace ConsoleView.Controllers
                         else
                         {
                             int id = int.Parse(args[1]);
-                            studentManager.DeleteStudent(id);
 
                             var StudentPersonalData = new StudentPersonalData()
                             {

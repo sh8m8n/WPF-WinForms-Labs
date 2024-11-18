@@ -40,6 +40,9 @@ namespace Interactors
         {
             var student = studentRepository.Read(ID);
 
+            if (student == null)
+                return;
+
             student.Name = newPersonalData.Name;
             student.Speciality = newPersonalData.Speciality;
             student.Group = newPersonalData.Group;
@@ -58,6 +61,7 @@ namespace Interactors
             {
                 return new StudentDTO
                 {
+                    ID = s.ID,
                     Name = s.Name,
                     Speciality = s.Speciality,
                     Group = s.Group

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "Main\Main.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors", "Interactors\Interactors.csproj", "{0DA27886-877C-4C00-9C34-3BFE92413191}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsView", "WinFormsView\WinFormsView.csproj", "{AEE41F87-7053-4B04-9A83-8B4EBFF53442}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{0DA27886-877C-4C00-9C34-3BFE92413191}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DA27886-877C-4C00-9C34-3BFE92413191}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DA27886-877C-4C00-9C34-3BFE92413191}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEE41F87-7053-4B04-9A83-8B4EBFF53442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEE41F87-7053-4B04-9A83-8B4EBFF53442}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEE41F87-7053-4B04-9A83-8B4EBFF53442}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEE41F87-7053-4B04-9A83-8B4EBFF53442}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

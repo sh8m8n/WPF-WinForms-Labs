@@ -66,25 +66,29 @@ namespace ConsoleView.Controllers
             }
 
             //Формат таблицы
-            string horizontalLine =
-                new string('-', maxIDLength + maxNameLength + maxSpecialityLength + maxGroupLength + 5);
+            string UpperHorizontalLine =
+                $"┌{new string('─', maxIDLength + maxNameLength + maxSpecialityLength + maxGroupLength + 3)}┐";
+            string MediumHorizontalLine =
+                $"├{new string('─', maxIDLength + maxNameLength + maxSpecialityLength + maxGroupLength + 3)}┤";
+            string LowerHorizontalLine =
+                $"└{new string('─', maxIDLength + maxNameLength + maxSpecialityLength + maxGroupLength + 3)}┘";
 
-            sb.Append(horizontalLine);
-            sb.Append($"\n|ID{new string(' ', maxIDLength - 2)}|Имя{new string(' ', maxNameLength - 3)}|" +
-                $"Спец.{new string(' ', maxSpecialityLength - 5)}|Группа{new string(' ', maxGroupLength - 6)}|\n");
-            sb.Append(horizontalLine);
+            sb.Append(UpperHorizontalLine);
+            sb.Append($"\n│ID{new string(' ', maxIDLength - 2)}│Имя{new string(' ', maxNameLength - 3)}│" +
+                $"Спец.{new string(' ', maxSpecialityLength - 5)}│Группа{new string(' ', maxGroupLength - 6)}│\n");
+            sb.Append(MediumHorizontalLine);
 
             foreach (StudentDTO student in students)
             {
                 sb.Append(
-                    $"\n|{student.ID}{new string(' ', maxIDLength - student.ID.ToString().Length)}" +
-                    $"|{student.Name}{new string(' ', maxNameLength - student.Name.Length)}" +
-                    $"|{student.Speciality}{new string(' ', maxSpecialityLength - student.Speciality.Length)}" +
-                    $"|{student.Group}{new string(' ', maxGroupLength - student.Group.Length)}|"
+                    $"\n│{student.ID}{new string(' ', maxIDLength - student.ID.ToString().Length)}" +
+                    $"│{student.Name}{new string(' ', maxNameLength - student.Name.Length)}" +
+                    $"│{student.Speciality}{new string(' ', maxSpecialityLength - student.Speciality.Length)}" +
+                    $"│{student.Group}{new string(' ', maxGroupLength - student.Group.Length)}│"
                     );
             }
 
-            sb.Append($"\n{horizontalLine}");
+            sb.Append($"\n{LowerHorizontalLine}");
 
             return sb.ToString();
         }
