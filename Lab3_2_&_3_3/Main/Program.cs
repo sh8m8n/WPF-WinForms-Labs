@@ -5,12 +5,14 @@ using ConsoleView.View;
 using ConsoleView.Presenters;
 using WinFormsView;
 using System.Windows.Forms;
+using DapperDB;
+using System.Threading.Tasks;
 
 namespace Main
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             ConsoleRamDemo();
         }
@@ -83,6 +85,45 @@ namespace Main
             MainWindow.studentManagementController = studentManagementPresenter;
 
             MainWindow.ShowDialog();
+        }
+
+        private static void ConsoleDapperDemo()
+        {
+            //Контроллеры
+            StudentManagementController studentManagementController = new StudentManagementController();
+
+            //инетракторы
+            ErrorNotificationUseCase errorNotificationUseCase = new ErrorNotificationUseCase();
+            StudentManagementUseCase studentManagementUseCase = new StudentManagementUseCase();
+
+            //БД
+            DapperStudentRepoFactory dapperDBFactory= new DapperStudentRepoFactory();
+
+
+            //Презентаторы
+            StudentManagementPresenter studentManagementPresenter = new StudentManagementPresenter();
+            ErrorPresenter errorPresenter = new ErrorPresenter();
+
+            //Представления
+            ErrorWindowView errorWindow = new ErrorWindowView();
+            MainWindowView mainWindow = new MainWindowView();
+
+            //=======================ЗАВИСИМОСТИ======================
+
+            //Контроллеры
+            studentManagementController.studentManager = studentManagementUseCase;
+            studentManagementController.errorNotificator = errorNotificationUseCase;
+
+            //Интеракторы
+            studentManagementUseCase.presenter = studentManagementPresenter;
+            studentManagementUseCase.repositoryFactory = dapperDBFactory;
+            errorNotificationUseCase.presenter = errorPresenter;
+
+            //Презентаторы
+            studentManagementPresenter.MainWindow = mainWindow;
+            errorPresenter.errorWindow = errorWindow;
+
+            studentManagementController.Main();
         }
     }
 }

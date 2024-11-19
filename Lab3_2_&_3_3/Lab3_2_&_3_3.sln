@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors", "Interactors\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsView", "WinFormsView\WinFormsView.csproj", "{66EA1BCC-11FB-4821-A121-373E80AC2B4C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DapperDB", "DapperDB\DapperDB.csproj", "{29B13CA7-0495-437E-BC62-F89D7296F34E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDB", "EntityFrameworkDB\EntityFrameworkDB.csproj", "{B0DEA02A-ABDA-4C16-96B2-8B9B29DD998B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{66EA1BCC-11FB-4821-A121-373E80AC2B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66EA1BCC-11FB-4821-A121-373E80AC2B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66EA1BCC-11FB-4821-A121-373E80AC2B4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29B13CA7-0495-437E-BC62-F89D7296F34E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29B13CA7-0495-437E-BC62-F89D7296F34E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29B13CA7-0495-437E-BC62-F89D7296F34E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29B13CA7-0495-437E-BC62-F89D7296F34E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0DEA02A-ABDA-4C16-96B2-8B9B29DD998B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0DEA02A-ABDA-4C16-96B2-8B9B29DD998B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0DEA02A-ABDA-4C16-96B2-8B9B29DD998B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0DEA02A-ABDA-4C16-96B2-8B9B29DD998B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
