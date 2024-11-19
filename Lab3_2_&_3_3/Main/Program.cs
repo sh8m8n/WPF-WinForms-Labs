@@ -12,7 +12,7 @@ namespace Main
     {
         static void Main(string[] args)
         {
-            WinFormRamDemo();
+            ConsoleRamDemo();
         }
 
         private static void ConsoleRamDemo()
