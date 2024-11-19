@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "Main\Main.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interactors", "Interactors\Interactors.csproj", "{0DA27886-877C-4C00-9C34-3BFE92413191}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsView", "WinFormsView\WinFormsView.csproj", "{AEE41F87-7053-4B04-9A83-8B4EBFF53442}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsView", "WinFormsView\WinFormsView.csproj", "{66EA1BCC-11FB-4821-A121-373E80AC2B4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{0DA27886-877C-4C00-9C34-3BFE92413191}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DA27886-877C-4C00-9C34-3BFE92413191}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DA27886-877C-4C00-9C34-3BFE92413191}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AEE41F87-7053-4B04-9A83-8B4EBFF53442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AEE41F87-7053-4B04-9A83-8B4EBFF53442}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AEE41F87-7053-4B04-9A83-8B4EBFF53442}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AEE41F87-7053-4B04-9A83-8B4EBFF53442}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66EA1BCC-11FB-4821-A121-373E80AC2B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66EA1BCC-11FB-4821-A121-373E80AC2B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66EA1BCC-11FB-4821-A121-373E80AC2B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66EA1BCC-11FB-4821-A121-373E80AC2B4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

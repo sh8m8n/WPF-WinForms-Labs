@@ -25,17 +25,19 @@ namespace WinFormsView
             DataUpdate();
         }
 
-        private void modifyButton_Click(object sender, EventArgs e)
-        {
-            StudentForm sf = new StudentForm(StudentManager, studentListBox.SelectedItem as StudentDTO);
-            sf.ShowDialog();
-            DataUpdate();
-        }
+        //private void modifyButton_Click(object sender, EventArgs e)
+        //{
+        //    StudentForm sf = new StudentForm(StudentManager, studentListBox.SelectedItem as StudentDTO);
+        //    sf.ShowDialog();
+        //    DataUpdate();
+        //}
 
         private void DataUpdate()
         {
             studentListBox.Items.Clear();
             studentListBox.Items.AddRange(StudentManager.ReadAllStudents().ToArray());
+
+            dataGridView1.DataSource = students;
 
             var chartData = StudentManager.GetSpecialitiesMembersCount();
 
@@ -58,6 +60,11 @@ namespace WinFormsView
                 StudentManager.DeleteStudent(s.ID);
                 DataUpdate();
             }
+        }
+
+        private void Chart1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

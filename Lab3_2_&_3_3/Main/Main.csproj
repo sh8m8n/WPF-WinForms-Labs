@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,6 +70,10 @@
     <ProjectReference Include="..\RAMDataBase\RAMDataBase.csproj">
       <Project>{e3abae27-d67d-4c46-b346-f6d4be9ee9a0}</Project>
       <Name>RAMDataBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinFormsView\WinFormsView.csproj">
+      <Project>{66ea1bcc-11fb-4821-a121-373e80ac2b4c}</Project>
+      <Name>WinFormsView</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

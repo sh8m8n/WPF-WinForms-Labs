@@ -3,6 +3,8 @@ using Interactors;
 using ConsoleView.Controllers;
 using ConsoleView.View;
 using ConsoleView.Presenters;
+using WinFormsView;
+using System.Windows.Forms;
 
 namespace Main
 {
@@ -10,7 +12,7 @@ namespace Main
     {
         static void Main(string[] args)
         {
-            ConsoleRamDemo();
+            WinFormRamDemo();
         }
 
         private static void ConsoleRamDemo()
@@ -49,6 +51,36 @@ namespace Main
             errorPresenter.errorWindow = errorWindow;
 
             studentManagementController.Main();
+        }
+
+        private static void WinFormRamDemo()
+        {
+            //инетракторы
+            StudentManagementUseCase studentManagementUseCase = new StudentManagementUseCase();
+
+            //БД
+            RAMStudentRepository rAMStudentRepository = new RAMStudentRepository();
+
+            //Презентаторы
+            var studentManagementPresenter = new WinFormsView.Presenter.StudentManagementPresenter();
+
+            //Представления
+            var MainWindow = new WinFormsView.View.MainWindow();
+
+            //=======================ЗАВИСИМОСТИ======================
+
+            //Интеракторы
+            studentManagementUseCase.presenter = studentManagementPresenter;
+            studentManagementUseCase.studentRepository = rAMStudentRepository;
+
+            //Презентаторы
+            studentManagementPresenter.studentManager = studentManagementUseCase;
+            studentManagementPresenter.view = MainWindow;
+
+            //Представления
+            MainWindow.studentManagementController = studentManagementPresenter;
+
+            MainWindow.ShowDialog();
         }
     }
 }
