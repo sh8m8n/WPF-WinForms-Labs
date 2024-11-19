@@ -76,7 +76,7 @@ namespace WinFormsView.View
                 var f = sender as StudentWindow;
 
 
-                studentManagementController.Update(id, f.Name, f.Speciality, f.Group);
+                studentManagementController.Update(id, f.NameStudent, f.Speciality, f.Group);
             }
         }
 

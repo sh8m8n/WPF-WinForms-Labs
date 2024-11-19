@@ -48,6 +48,7 @@
     <Compile Include="Interfaces\IErrorNotificationInputPort.cs" />
     <Compile Include="Interfaces\IErrorNotificationOutputPort.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IRepositoryFactory.cs" />
     <Compile Include="Interfaces\IStudentManagementOutputPort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\IStudentsManagementInputPort.cs" />

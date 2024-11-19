@@ -7,9 +7,20 @@ namespace Interactors
 {
     public class StudentManagementUseCase : IStudentsManagementInputPort
     {
-        public IRepository<Student> studentRepository;
+        private IRepository<Student> studentRepository;
+
+        public IRepositoryFactory<IRepository<Student>> repositoryFactory 
+        { 
+            get => repositoryFactory1;
+            set 
+            {
+                repositoryFactory1 = value;
+                studentRepository = repositoryFactory.Create();
+            }
+        }
 
         public IStudentManagementOutputPort presenter;
+        private IRepositoryFactory<IRepository<Student>> repositoryFactory1;
 
         public void CreateStudent(StudentPersonalData personalData)
         {

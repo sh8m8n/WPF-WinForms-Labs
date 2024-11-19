@@ -26,6 +26,7 @@ namespace Main
 
             //БД
             RAMStudentRepository rAMStudentRepository = new RAMStudentRepository();
+            RepositoryFactory repositoryFactory = new RepositoryFactory();
 
             //Презентаторы
             StudentManagementPresenter studentManagementPresenter = new StudentManagementPresenter();
@@ -43,7 +44,7 @@ namespace Main
 
             //Интеракторы
             studentManagementUseCase.presenter = studentManagementPresenter;
-            studentManagementUseCase.studentRepository = rAMStudentRepository;
+            studentManagementUseCase.repositoryFactory = repositoryFactory;
             errorNotificationUseCase.presenter = errorPresenter;
 
             //Презентаторы
@@ -60,6 +61,7 @@ namespace Main
 
             //БД
             RAMStudentRepository rAMStudentRepository = new RAMStudentRepository();
+            RepositoryFactory repositoryFactory = new RepositoryFactory();
 
             //Презентаторы
             var studentManagementPresenter = new WinFormsView.Presenter.StudentManagementPresenter();
@@ -71,7 +73,7 @@ namespace Main
 
             //Интеракторы
             studentManagementUseCase.presenter = studentManagementPresenter;
-            studentManagementUseCase.studentRepository = rAMStudentRepository;
+            studentManagementUseCase.repositoryFactory = repositoryFactory;
 
             //Презентаторы
             studentManagementPresenter.studentManager = studentManagementUseCase;
