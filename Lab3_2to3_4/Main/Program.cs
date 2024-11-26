@@ -5,6 +5,7 @@ using ConsoleUI.View;
 using ConsoleUI.Presenters;
 using DapperDataBase;
 using System.Threading.Tasks;
+using WinFormsUI;
 using EntityFrameworkDataBase;
 
 namespace Main
@@ -13,9 +14,12 @@ namespace Main
     {
         static void Main()
         {
-            ConsoleEFConfig();
+            WinFormRamConfig();
         }
 
+        /// <summary>
+        /// Вью - Консоль БД - оперативная память
+        /// </summary>
         private static void ConsoleRamConfig()
         {
             //Контроллеры
@@ -54,37 +58,43 @@ namespace Main
             studentManagementController.Main();
         }
 
+        /// <summary>
+        /// Вью - WinForms БД - оперативная память
+        /// </summary>
         private static void WinFormRamConfig()
         {
-        //    //инетракторы
-        //    StudentManagementUseCase studentManagementUseCase = new StudentManagementUseCase();
+            //инетракторы
+            StudentManagementUseCase studentManagementUseCase = new StudentManagementUseCase();
 
-        //    //БД
-        //    RAMStudentRepository rAMStudentRepository = new RAMStudentRepository();
-        //    RepositoryFactory repositoryFactory = new RepositoryFactory();
+            //БД
+            RAMStudentRepository rAMStudentRepository = new RAMStudentRepository();
+            RAMStudentRepositoryFactory repositoryFactory = new RAMStudentRepositoryFactory();
 
-        //    //Презентаторы
-        //    var studentManagementPresenter = new WinFormsView.Presenter.StudentManagementPresenter();
+            //Презентаторы
+            var studentManagementPresenter = new WinFormsUI.Presenters.StudentManagementPresenter();
 
-        //    //Представления
-        //    var MainWindow = new WinFormsView.View.MainWindow();
+            //Представления
+            var MainWindow = new WinFormsUI.Views.MainWindowView();
 
-        //    //=======================ЗАВИСИМОСТИ======================
+            //=======================ЗАВИСИМОСТИ======================
 
-        //    //Интеракторы
-        //    studentManagementUseCase.presenter = studentManagementPresenter;
-        //    studentManagementUseCase.repositoryFactory = repositoryFactory;
+            //Интеракторы
+            studentManagementUseCase.presenter = studentManagementPresenter;
+            studentManagementUseCase.repositoryFactory = repositoryFactory;
 
-        //    //Презентаторы
-        //    studentManagementPresenter.studentManager = studentManagementUseCase;
-        //    studentManagementPresenter.view = MainWindow;
+            //Презентаторы
+            studentManagementPresenter.studentManager = studentManagementUseCase;
+            studentManagementPresenter.view = MainWindow;
 
-        //    //Представления
-        //    MainWindow.studentManagementController = studentManagementPresenter;
+            //Представления
+            MainWindow.studentManagementController = studentManagementPresenter;
 
-        //    MainWindow.ShowDialog();
+            MainWindow.ShowDialog();
         }
 
+        /// <summary>
+        /// Вью - Консоль БД - Dapper + postgre
+        /// </summary>
         private static void ConsoleDapperConfig()
         {
             //Контроллеры
@@ -124,6 +134,9 @@ namespace Main
             studentManagementController.Main();
         }
 
+        /// <summary>
+        /// Вью - Консоль БД - EntityFramework + postgre
+        /// </summary>
         private static void ConsoleEFConfig()
         {
             //Контроллеры

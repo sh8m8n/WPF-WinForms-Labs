@@ -24,7 +24,7 @@ namespace DapperDataBase
 
             using (IDbConnection db = new NpgsqlConnection(_connectionString))
             {
-                var sql = "INSERT INTO Students (Name, Speciality, StudentGroup) VALUES (@Name, @Speciality, @Group) RETURNING ID;";
+                var sql = "INSERT INTO students (name, speciality, studentgroup) VALUES (@Name, @Speciality, @Group) RETURNING ID;";
                 newStudentDB.ID = db.ExecuteScalar<int>(sql, newStudentDB);
             }
 
@@ -55,7 +55,7 @@ namespace DapperDataBase
         {
             using (IDbConnection db = new NpgsqlConnection(_connectionString))
             {
-                var sql = $"UPDATE Students SET Name = @Name, Speciality = @Speciality, StudentGroup = @Group WHERE Students.ID = @{student.ID}";
+                var sql = $"UPDATE Students SET name = @Name, speciality = @Speciality, studentgroup = @Group WHERE students.ID = @{student.ID}";
                 db.Execute(sql, student);
             }
         }
@@ -64,7 +64,7 @@ namespace DapperDataBase
         {
             using (IDbConnection db = new NpgsqlConnection(_connectionString))
             {
-                var sql = "DELETE FROM Students WHERE ID = @Id;";
+                var sql = "DELETE FROM students WHERE ID = @Id;";
                 db.Execute(sql, new { Id = id });
             }
         }

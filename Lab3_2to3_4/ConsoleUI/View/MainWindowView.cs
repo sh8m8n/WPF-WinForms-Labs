@@ -17,9 +17,9 @@ namespace ConsoleUI.View
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(
                 $"Список доступных команд / шаблон ввода:" +
-                $"\n\tДобавить студента : add (Name) (Group) (Speciality)" +
-                $"\n\tУдалить студента : delete (ID)" +
-                $"\n\tИзменить студента : update (ID) (New Name) (New Group) (New Speciality)");
+                $"\n\tДобавить студента : add {{Name}} {{Group}} {{Speciality}}" +
+                $"\n\tУдалить студента : delete {{ID}}" +
+                $"\n\tИзменить студента : update {{ID}} {{New Name}} {{New Group}} {{New Speciality}}");
 
             //Ввод команды
 

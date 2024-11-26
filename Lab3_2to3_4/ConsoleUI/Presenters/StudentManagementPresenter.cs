@@ -8,14 +8,24 @@ namespace ConsoleUI.Presenters
 {
     public class StudentManagementPresenter : IStudentManagementOutputPort
     {
-        private const string ZeroMembersReport = "Студентов нет";
+        private const string ZeroMembersReport = "Список студентов пуст";
 
         public IMainWindowView MainWindow { get; set; }
 
         public void Present(IEnumerable<StudentDTO> students)
         {
-            MainWindowViewModel viewModel =
+            MainWindowViewModel viewModel;
+
+            if (students.Count() == 0 || students == null)
+            {
+                viewModel =
+                new MainWindowViewModel(String.Empty, ZeroMembersReport, ConsoleColor.DarkCyan);
+            }
+            else
+            {
+                viewModel =
                 new MainWindowViewModel(FormatTable(students), FormatHistogram(students), ConsoleColor.DarkCyan);
+            }
 
             MainWindow.Render(viewModel);
         }

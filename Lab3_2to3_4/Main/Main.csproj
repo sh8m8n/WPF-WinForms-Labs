@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
   </PropertyGroup>
@@ -14,6 +14,7 @@
     <ProjectReference Include="..\EntityFrameworkDataBase\EntityFrameworkDataBase.csproj" />
     <ProjectReference Include="..\Interactors\Interactors.csproj" />
     <ProjectReference Include="..\RAMDataBase\RAMDataBase.csproj" />
+    <ProjectReference Include="..\WinFormsUI\WinFormsUI.csproj" />
   </ItemGroup>
 
 </Project>

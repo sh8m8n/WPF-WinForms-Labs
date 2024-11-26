@@ -1,4 +1,4 @@
-﻿namespace WinFormsView.View
+﻿namespace WinFormsUI.Views
 {
     partial class StudentWindow
     {
