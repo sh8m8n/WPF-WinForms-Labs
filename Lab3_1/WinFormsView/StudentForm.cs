@@ -40,5 +40,35 @@ namespace WinFormsView
             }
 
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GroupTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SpecialityTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

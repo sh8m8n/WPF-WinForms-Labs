@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ConsoleUI\ConsoleUI.csproj" />
+    <ProjectReference Include="..\DapperDataBase\DapperDataBase.csproj" />
+    <ProjectReference Include="..\Entities\Entities.csproj" />
+    <ProjectReference Include="..\EntityFrameworkDataBase\EntityFrameworkDataBase.csproj" />
+    <ProjectReference Include="..\Interactors\Interactors.csproj" />
+    <ProjectReference Include="..\RAMDataBase\RAMDataBase.csproj" />
+  </ItemGroup>
+
+</Project>
