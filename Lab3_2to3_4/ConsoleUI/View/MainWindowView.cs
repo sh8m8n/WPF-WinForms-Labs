@@ -33,6 +33,7 @@ namespace ConsoleUI.View
 
             //Таблица
             Console.ForegroundColor = ConsoleColor.White;
+
             Console.WriteLine($"\n\n{viewModel.StudentSheet}");
 
             Console.ForegroundColor = ConsoleColor.Green;

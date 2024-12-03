@@ -10,6 +10,7 @@ namespace ConsoleUI.Controllers
 
         public void Main()
         {
+            ApplySettings();
 
             studentManager.ReadAllStudents();
 
@@ -115,6 +116,14 @@ namespace ConsoleUI.Controllers
                 }
 
             }
+        }
+
+        /// <summary>
+        /// Устанавливает необходимые для корректной работы настройки консоли
+        /// </summary>
+        private void ApplySettings()
+        {
+            Console.BufferHeight = 500;
         }
 
         private void InvokeErrorDialog(ErrorData errorData)

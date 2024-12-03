@@ -14,7 +14,7 @@ namespace Main
     {
         static void Main()
         {
-            WinFormRamConfig();
+            ConsoleRamConfig();
         }
 
         /// <summary>
